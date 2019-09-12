@@ -19,7 +19,7 @@ Här ska texter kring projektet ligga. Exempelvis:
 * Resultat av tester
 
 ## js
-Här ska all JavaScript kod ligga. Det är dock inte nödvändigt i denna uppgift. 
+Här ska all JavaScript kod ligga. 
 
 ## View
 Här ska alla HTML sidor ligga (förutom ```index.html```)
