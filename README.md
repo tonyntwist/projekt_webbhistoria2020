@@ -7,11 +7,6 @@ Koden i projektet ska vara uppdelat i 4 olika delar
 * view
 
 Huvudsidan: ```index.html``` och sidans stylesheet: ```style.css``` ligger i huvudmappen. 
-## Assets
-Här ska olika media-filer ligga som: 
-* Bilder
-* Gif
-* Video
 
 ## Documentation
 Här ska texter kring projektet ligga. Exempelvis: 
