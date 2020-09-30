@@ -1,0 +1,44 @@
+'use strict';
+
+function setCookie(name, value, days) {
+	var d = new Date();
+	d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+	document.cookie = name + '=' + value + ';path=/;SameSite=Strict;Secure;expires=' + d.toGMTString();
+}
+
+function getCookie(name) {
+	var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+	return v ? v[2] : null;
+}
+
+var acceptCookies = function(cookieSettings) {
+	setCookie(cookieSettings.cookieName, 'YES', 365);
+	if (cookieSettings.cookieBar) {
+		cookieSettings.cookieBar.classList.remove(cookieSettings.visibleClass);
+	}
+}
+
+function iis_cookie_bar() {
+	var cookieSettings = {
+		cookieBar: document.querySelector('.js-cookie-disclaimer'),
+		visibleClass: 'is-visible',
+		cookieName: 'internetstiftelsen-cookie-consent',
+		acceptButton: document.getElementById('js-accept-cookies'),
+	}
+
+	var url = window.location.search;
+	if (url.indexOf('?nocookiewarning=1') !== -1) {
+		setCookie(cookieSettings.cookieName, 'YES', 365);
+	}
+
+	// No cookie set? Show cookie disclaimer bar
+	if (!getCookie(cookieSettings.cookieName)) {
+		if (cookieSettings.cookieBar) {
+			cookieSettings.cookieBar.classList.add(cookieSettings.visibleClass);
+		}
+	}
+
+	if (cookieSettings.acceptButton) {
+		cookieSettings.acceptButton.addEventListener('click', acceptCookies.bind(this, cookieSettings));
+	}
+}
